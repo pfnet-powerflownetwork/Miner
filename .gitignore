@@ -1,0 +1,12 @@
+.project
+.settings
+.classpath
+Makefile
+pfnet_miner
+CMakeCache.txt
+compat/
+CMakeFiles
+
+PFNETPL/cmake_install\.cmake
+
+cmake_install\.cmake
