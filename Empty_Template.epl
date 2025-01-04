@@ -1,0 +1,102 @@
+/******************************************************************************
+ *
+ * Data Type Declarations
+ *
+ *  - Declaration of an array of unsigned ints with size 1000
+ *
+ *****************************************************************************/
+
+array_uint 1000;
+
+
+/******************************************************************************
+ *
+ * Submit Data For Verification Declarations
+ *
+ *  - Configuration to send 32 elements from the u[] array for validation,
+ *    starting at index 0.
+ *
+ *****************************************************************************/
+
+submit_sz 32;    // Submits 32 uints for Bounty / POW validation
+submit_idx 0;    // Extracts data from u[0] to u[31]
+
+
+/******************************************************************************
+ *
+ * User-Defined Functions
+ *
+ *  - Functions that perform specific operations for the program's logic.
+ *  - Improved examples to make them more intuitive and practical.
+ *
+ *****************************************************************************/
+
+/**
+ * Function that performs bitwise operations on elements of the `u` array
+ * and stores the results at the beginning of the array.
+ */
+function process_bitwise_operations {
+  repeat (u[100], 32, 32) {
+    // Bitwise operation using a left shift and XOR
+    u[u[100]] = (m[4] << 2) ^ u[u[100]];
+  }
+}
+
+/**
+ * Function that increments elements of the `u` array by the value of `m[5]`.
+ */
+function increment_array_elements {
+  repeat (u[100], 32, 32) {
+    u[u[100]] += m[5]; // Adds a fixed value to each element in the array
+  }
+}
+
+
+/******************************************************************************
+ *
+ * Main Function
+ *
+ *  - Entry point of the program.
+ *  - Controls the main workflow, calling other functions as needed.
+ *
+ *****************************************************************************/
+
+function main {
+
+  // Special processing for Round 0
+  if (m[1] == 0) {
+    process_bitwise_operations();
+  } else {
+    // Copies stored values from `s` to `u` starting from the second round
+    repeat (u[100], 32, 32) {
+      u[u[100]] = s[u[100]];
+    }
+  }
+
+  // Increments elements in the array
+  increment_array_elements();
+
+  // Calls the verification function
+  verify();
+}
+
+
+/******************************************************************************
+ *
+ * Verify Function
+ *
+ *  - Validates the solution found for Bounty or POW.
+ *
+ *****************************************************************************/
+
+function verify {
+
+  // Adds the first two elements of the `u` array
+  u[200] = u[0] + u[1];
+
+  // Validates if the sum is less than 1000 for Bounty
+  verify_bty(u[200] < 1000);
+
+  // Uses 4 uints for POW verification
+  verify_pow(u[10], u[20], u[100], u[200]);
+}
