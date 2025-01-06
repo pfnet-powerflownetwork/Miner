@@ -5,30 +5,30 @@ int main() {
     int *ptr;
     int n, i;
 
-    // Solicita ao usuário o número de elementos
-    printf("Digite o número de elementos: ");
+    // Prompt the user for the number of elements
+    printf("Enter the number of elements: ");
     scanf("%d", &n);
 
-    // Aloca memória para n elementos
+    // Allocate memory for n elements
     ptr = (int*) malloc(n * sizeof(int));
 
-    // Verifica se a memória foi alocada com sucesso
+    // Check if the memory was successfully allocated
     if (ptr == NULL) {
-        printf("Erro: Memória não alocada.\n");
+        printf("Error: Memory not allocated.\n");
         return 1;
     }
 
-    printf("Memória alocada com sucesso. Insira os valores:\n");
+    printf("Memory successfully allocated. Enter the values:\n");
     for (i = 0; i < n; i++) {
         scanf("%d", &ptr[i]);
     }
 
-    printf("Os valores inseridos são:\n");
+    printf("The entered values are:\n");
     for (i = 0; i < n; i++) {
         printf("%d ", ptr[i]);
     }
 
-    printf("\nLiberando memória...\n");
+    printf("\nFreeing memory...\n");
     free(ptr);
 
     return 0;
