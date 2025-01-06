@@ -64,8 +64,6 @@ Contributions are welcome! Please follow the standard GitHub workflow:
 3. Commit your changes
 4. Open a pull request
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## Acknowledgments
 - The PFNET team for their continuous efforts in decentralized computing.
