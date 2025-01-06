@@ -4,6 +4,7 @@
 * Copyright 2014 Lucas Jones
 * Copyright 2016 sprocket
 * Copyright 2016 Evil-Knievel
+* Copyright 2021 Devil991
 *
 * This program is free software; you can redistribuSte it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
